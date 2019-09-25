@@ -1,6 +1,6 @@
 {
   "name": "has-scrolled",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Add scroll info to &lt;body&gt;.",
   "main": "index.js",
   "scripts": {

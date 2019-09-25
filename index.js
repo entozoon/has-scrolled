@@ -19,7 +19,7 @@ const setHasScrolled = () => {
 
   window.requestAnimationFrame(setScrollParallax);
 };
-export const hasScrolled = () => {
+export default hasScrolled = () => {
   // Use animation frames rather than on scroll, as it's hard to say exactly when the page load position has locked in
   window.requestAnimationFrame(setHasScrolled);
 };
