@@ -1,0 +1,19 @@
+{
+  "name": "has-scrolled",
+  "version": "1.0.0",
+  "description": "Add scroll info to &lt;body&gt;.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/entozoon/has-scrolled.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/entozoon/has-scrolled/issues"
+  },
+  "homepage": "https://github.com/entozoon/has-scrolled#readme"
+}
