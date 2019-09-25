@@ -1,23 +1,24 @@
+export const scrollY =
+  document.documentElement && document.documentElement.scrollTop
+    ? document.documentElement.scrollTop
+    : document.body.scrollTop;
+
 const setHasScrolled = () => {
-  // OPTIMISATION - we could allow an option to have it run less frequently - frameskip style
-
-  let scroll =
-    document.documentElement && document.documentElement.scrollTop
-      ? document.documentElement.scrollTop
-      : document.body.scrollTop;
-
-  // Toggle a class if user has scrolled down somewhat
+  // Toggle a class if user has scrolled down somewhat. These should be parameters ideally
   let somewhat = 50,
     tolerance = 30;
 
   // Allow a tolerance either way, for old pages as header is sticky, and it's a whole thing
-  if (scroll > somewhat + tolerance) {
+  if (scrollY > somewhat + tolerance) {
     document.body.classList.add("has-scrolled");
-  } else if (scroll < somewhat - tolerance) {
+  } else if (scrollY < somewhat - tolerance) {
     document.body.classList.remove("has-scrolled");
   }
+  // <body data-scroll-y="120">
+  document.body.setAttribute("data-scroll-y", scrollY);
 
-  window.requestAnimationFrame(setScrollParallax);
+  // OPTIMISATION - we could allow an option to have it run less frequently - frameskip style
+  window.requestAnimationFrame(setHasScrolled);
 };
 
 export default hasScrolled = () => {
