@@ -9,6 +9,7 @@ const setHasScrolled = () => {
   // Toggle a class if user has scrolled down somewhat
   let somewhat = 50,
     tolerance = 30;
+
   // Allow a tolerance either way, for old pages as header is sticky, and it's a whole thing
   if (scroll > somewhat + tolerance) {
     document.body.classList.add("has-scrolled");
@@ -16,10 +17,9 @@ const setHasScrolled = () => {
     document.body.classList.remove("has-scrolled");
   }
 
-  console.log(scrollTop);
   window.requestAnimationFrame(setScrollParallax);
 };
-module.exports = () => {
+export const hasScrolled = () => {
   // Use animation frames rather than on scroll, as it's hard to say exactly when the page load position has locked in
   window.requestAnimationFrame(setHasScrolled);
 };
