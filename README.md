@@ -11,6 +11,6 @@ Add scroll info to &lt;body&gt;.
 You're likely gonna wanna import and compile it, as it's written in ES6 (because life is short).
 
 ```js
-import hasScrolled from "hasScrolled";
+import hasScrolled from "has-scrolled";
 hasScrolled();
 ```
