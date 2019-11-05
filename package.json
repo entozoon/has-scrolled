@@ -4,7 +4,7 @@
   "description": "Add scroll info to &lt;body&gt;.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsc -w ./index.ts"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/entozoon/has-scrolled/issues"
   },
-  "homepage": "https://github.com/entozoon/has-scrolled#readme"
+  "homepage": "https://github.com/entozoon/has-scrolled#readme",
+  "dependencies": {
+    "typescript": "^3.6.4"
+  }
 }
