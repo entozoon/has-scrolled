@@ -1,6 +1,6 @@
 {
   "name": "has-scrolled",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Add scroll info to &lt;body&gt;.",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,8 @@
     "url": "https://github.com/entozoon/has-scrolled/issues"
   },
   "homepage": "https://github.com/entozoon/has-scrolled#readme",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "typescript": "^3.6.4"
   }
 }
