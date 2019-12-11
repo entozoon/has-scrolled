@@ -1,27 +1,37 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 exports.__esModule = true;
-exports.scrollY = function () {
-    return document.documentElement && document.documentElement.scrollTop
-        ? document.documentElement.scrollTop
-        : document.body.scrollTop;
-};
-var setHasScrolled = function () {
-    // Toggle a class if user has scrolled down somewhat. These should be parameters ideally
-    var somewhat = 50, tolerance = 30;
-    // Allow a tolerance either way, as for pages where the header is sticky it's a whole thing
-    if (exports.scrollY() > somewhat + tolerance) {
-        document.body.classList.add("has-scrolled");
+exports.scrollY = function (element) { return element.scrollTop; };
+var setHasScrolled = function (options) { return function () {
+    var defaults = {
+        element: document.querySelector("body"),
+        minScroll: 50,
+        scrollTolerance: 30,
+        "class": "has-scrolled"
+    };
+    options = __assign(__assign({}, defaults), options);
+    options.target = options.target || options.element;
+    var element = options.element, target = options.target, minScroll = options.minScroll, scrollTolerance = options.scrollTolerance;
+    var hasScrolledClass = options["class"];
+    if (exports.scrollY(element) > minScroll + scrollTolerance) {
+        target.classList.add(hasScrolledClass);
     }
-    else if (exports.scrollY() < somewhat - tolerance) {
-        document.body.classList.remove("has-scrolled");
+    else if (exports.scrollY(element) < minScroll - scrollTolerance) {
+        target.classList.remove(hasScrolledClass);
     }
-    // <body data-scroll-y="120">
-    document.body.setAttribute("data-scroll-y", String(Math.floor(exports.scrollY())));
-    // OPTIMISATION - we could allow an option to have it run less frequently - frameskip style
-    window.requestAnimationFrame(setHasScrolled);
-};
-var hasScrolled = function () {
-    // Use animation frames rather than on scroll, as it's hard to say exactly when the page load position has locked in
-    window.requestAnimationFrame(setHasScrolled);
+    window.requestAnimationFrame(setHasScrolled(options));
+}; };
+var hasScrolled = function (options) {
+    window.requestAnimationFrame(setHasScrolled(options));
 };
 exports["default"] = hasScrolled;

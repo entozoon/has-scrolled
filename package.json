@@ -1,10 +1,10 @@
 {
   "name": "has-scrolled",
-  "version": "1.0.10",
-  "description": "Add scroll info to &lt;body&gt;.",
+  "version": "1.1.0",
+  "description": "Add scroll info to elements.",
   "main": "index.js",
   "scripts": {
-    "start": "tsc -w ./index.ts"
+    "start": "tsc -w --removeComments ./index.ts"
   },
   "repository": {
     "type": "git",

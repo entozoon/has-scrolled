@@ -1,28 +1,33 @@
-export const scrollY = () =>
-  document.documentElement && document.documentElement.scrollTop
-    ? document.documentElement.scrollTop
-    : document.body.scrollTop;
+export const scrollY = element => element.scrollTop;
 
-const setHasScrolled = () => {
-  // Toggle a class if user has scrolled down somewhat. These should be parameters ideally
-  let somewhat = 50,
-    tolerance = 30;
+const setHasScrolled = options => () => {
+  // Defaults to <body>
+  const defaults = {
+    element: document.querySelector("body"),
+    // target
+    minScroll: 50,
+    scrollTolerance: 30,
+    class: "has-scrolled"
+  };
+  options = { ...defaults, ...options };
+  options.target = options.target || options.element;
+  const { element, target, minScroll, scrollTolerance } = options;
+  const hasScrolledClass = options.class;
 
-  // Allow a tolerance either way, as for pages where the header is sticky it's a whole thing
-  if (scrollY() > somewhat + tolerance) {
-    document.body.classList.add("has-scrolled");
-  } else if (scrollY() < somewhat - tolerance) {
-    document.body.classList.remove("has-scrolled");
+  // Toggle a class if user has scrolled down somewhat.
+  // Allow a scrollTolerance either way as, for pages where the header is sticky, it's a whole thing
+  if (scrollY(element) > minScroll + scrollTolerance) {
+    target.classList.add(hasScrolledClass);
+  } else if (scrollY(element) < minScroll - scrollTolerance) {
+    target.classList.remove(hasScrolledClass);
   }
-  // <body data-scroll-y="120">
-  document.body.setAttribute("data-scroll-y", String(Math.floor(scrollY())));
 
   // OPTIMISATION - we could allow an option to have it run less frequently - frameskip style
-  window.requestAnimationFrame(setHasScrolled);
+  window.requestAnimationFrame(setHasScrolled(options));
 };
 
-const hasScrolled = () => {
+const hasScrolled = options => {
   // Use animation frames rather than on scroll, as it's hard to say exactly when the page load position has locked in
-  window.requestAnimationFrame(setHasScrolled);
+  window.requestAnimationFrame(setHasScrolled(options));
 };
 export default hasScrolled;
