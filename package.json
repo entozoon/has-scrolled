@@ -1,10 +1,10 @@
 {
   "name": "has-scrolled",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Add scroll info to elements.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "tsc -w --removeComments ./index.ts"
+    "start": "tsc -w"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,6 @@
   "homepage": "https://github.com/entozoon/has-scrolled#readme",
   "dependencies": {},
   "devDependencies": {
-    "typescript": "^3.6.4"
+    "typescript": "3.7.5"
   }
 }

@@ -1,6 +1,6 @@
-export const scrollY = element => element.scrollTop;
+export const scrollY = (element: HTMLElement) => element.scrollTop;
 
-const setHasScrolled = options => () => {
+const setHasScrolled = (options: any) => () => {
   // Defaults to <body>
   const defaults = {
     element: document.querySelector("body"),
@@ -26,7 +26,7 @@ const setHasScrolled = options => () => {
   window.requestAnimationFrame(setHasScrolled(options));
 };
 
-const hasScrolled = options => {
+const hasScrolled = (options: any) => {
   // Use animation frames rather than on scroll, as it's hard to say exactly when the page load position has locked in
   window.requestAnimationFrame(setHasScrolled(options));
 };
